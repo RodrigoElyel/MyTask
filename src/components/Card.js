@@ -2,17 +2,18 @@ import React from 'react'
 import { StyleSheet, Text, Touchable, TouchableOpacity, View } from 'react-native'
 import { AntDesign } from '@expo/vector-icons';
 
-const Card = ({ item, setText, copy }) => {
-    return (
-        <View style={[styles.container, {borderLeftWidth: item.realizada ? 5 : 0, borderColor: item.realizada ? "#47FA0E" : null}]}>
 
-            <View style={{width: '80%', marginVertical: 10 }}>
-                <Text style={{ fontSize: 16, color: 'white' , fontStyle: 'italic'}}> {item.tarefa} </Text>
+const Card = ({ item, setText, copy, visible, setVisible, setCurrentItem }) => {
+    return (
+        <View style={[styles.container, { borderLeftWidth: item.realizada ? 5 : 0, borderColor: item.realizada ? "#47FA0E" : null }]}>
+
+            <View style={{ width: '80%', marginVertical: 10 }}>
+                <Text style={{ fontSize: 16, color: 'white', fontStyle: 'italic' }}> {item.tarefa} </Text>
             </View>
 
             <View style={{ flexDirection: 'row', width: 60, marginLeft: 10, justifyContent: 'space-between' }}>
 
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => {setVisible(!visible), setCurrentItem(item)}}>
                     <AntDesign name="infocirlceo" size={18} color="#47FA0E" />
                 </TouchableOpacity>
 
